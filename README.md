@@ -23,19 +23,20 @@ Carilah Standar Deviasi dari data selisih pasangan pengamatan tabel di atas!
 
 ![image](https://user-images.githubusercontent.com/114491445/207117835-ef3fe26f-eb5d-47e1-90f9-dfe36e9134f6.png)
 
->Tabel dibuat terlebih dahulu 
+Tabel dibuat terlebih dahulu 
 ```R
 sebelum <- c(78, 75, 67, 77, 70, 72, 78, 74, 77)
 sesudah <- c(100, 95, 70, 90, 90, 90, 89, 90, 100)
 ```
->Mendapatkan standar variasi sebelum dan sesudah aktivitas
+Mendapatkan standar variasi sebelum dan sesudah aktivitas
 ```R
 sd(sebelum)
 sd(sesudah)
 ```
 Hasil dari sd sebelum = 3.865805
 Hasil dari sd sesudah = 8.833333
->Mendapatkan selisih standar deviasi
+
+Mendapatkan selisih standar deviasi
 ```R
 sd(sebelum - sesudah)
 ```
@@ -54,21 +55,21 @@ Nilai dari t(p-value) = 6.003e-05
 
 ### 1.C 
 Tentukanlah apakah terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas 𝐴 jika diketahui tingkat signifikansi 𝛼 = 5% serta H0 : "tidak ada pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas 𝐴"
->Nilai probabilitas yang didapat dari uji t(p-value) adalah 6.003e-05. Sehingga nilai p-value lebih kecil dibandingkan nilai significant level yang nilainya 𝛼 = 0,05. Oleh karena itu, hipotesis nol ditolak dan hipotesis alternatif diterima.
+- Nilai probabilitas yang didapat dari uji t(p-value) adalah 6.003e-05. Sehingga nilai p-value lebih kecil dibandingkan nilai significant level yang nilainya 𝛼 = 0,05. Oleh karena itu, hipotesis nol ditolak dan hipotesis alternatif diterima.
 
->Kesimpulan : Terdapat pengaruh yang signifikan secara statistika dalam hal jumlah denyut jantung, sebelum dan sesudah mengkonsumsi obat 𝐴 pada tingkat signifikansi 5%.
+- Kesimpulan : Terdapat pengaruh yang signifikan secara statistika dalam hal jumlah denyut jantung, sebelum dan sesudah mengkonsumsi obat 𝐴 pada tingkat signifikansi 5%.
 
 ## Nomor 2 (Hipotesa 1 Sampel)
 >> Diketahui bahwa mobil dikemudikan rata - rata lebih dari 20.000 kilometer per tahun. Untuk menguji klaim ini, 100 pemilik mobil yang dipilih secara acak diminta untuk mencatat jarak yang mereka tempuh. Jika sampel acak menunjukan rata - rata 23.500 kilometer dan standar deviasi 3900 kilometer. (Kerjakan menggunakan library seperti referensi pada modul).
 
 ### 2A
 Apakah anda setuju dengan klaim tersebut?
-> Sebelum dilakukannya pembuktian saya setuju dengan klaim tersebut.
-> Setelah pembuktian pun benar adanya bahwa klaim itu dapat diterima.
+- Sebelum dilakukannya pembuktian saya setuju dengan klaim tersebut.
+- Setelah pembuktian pun benar adanya bahwa klaim itu dapat diterima.
 
 ### 2B 
 Jelaskan maksud dari output yang dihasilkan!
-> Output yang dihasilkan adalah nilai z = 8.9744, p-value < 2.2e-16, hipotesis alternatif > 20000, dan confidence interval = 22858.51 menggunakan fungsi di bawah ini :
+- Output yang dihasilkan adalah nilai z = 8.9744, p-value < 2.2e-16, hipotesis alternatif > 20000, dan confidence interval = 22858.51 menggunakan fungsi di bawah ini :
 
 ```R
 klaim_mean <- 20000
@@ -84,7 +85,8 @@ zsum.test(mean.x = sampel_mean, sigma.x = sd_populasi,
 
 ### 2C
 Buatlah kesimpulan berdasarkan P-Value yang dihasilkan!
-> Kesimpulan : Nilai P-Value lebih kecil dari nilai significant level 𝛼 = 0,05. Sehingga hipotesis nol ditolak sedangkan hipotesis alternatif diterima. Jadi klaim bahwa mobil dikemudikan rata - rata lebih dari 20000 kilometer per tahun dapat diterima.
+
+Kesimpulan : Nilai P-Value lebih kecil dari nilai significant level 𝛼 = 0,05. Sehingga hipotesis nol ditolak sedangkan hipotesis alternatif diterima. Jadi klaim bahwa mobil dikemudikan rata - rata lebih dari 20000 kilometer per tahun dapat diterima.
 
 ## Nomor 3 (Hipotesa 2 Sampel) 
 >>Diketahui perusahaan memiliki seorang data analyst ingin memecahkan permasalahan pengambilan keputusan dalam perusahaan tersebut. Selanjutnya didapatkanlah data berikut dari perusahaan saham tersebut.
