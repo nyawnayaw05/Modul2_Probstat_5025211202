@@ -121,6 +121,7 @@ s_pool <- (((n1 - 1)*(sigma1^2) + (n2 - 1)
         *(sigma2^2))/(n1 + n2 -2))^0.5
 s_pool
 ```
+![image](https://user-images.githubusercontent.com/114491445/207156444-748b5302-f734-4d98-83af-d75ffc2f321c.png)
 Hasil sampel statistik = 1.473266
 
 ### 3C 
@@ -132,6 +133,7 @@ tsum.test (mean.x = x1, s.x = sigma1, n.x = n1,
            mean.y = x2, s.y = sigma2, n.y = n2,
            alternative = "two.sided", var.equal =  TRUE)
 ```
+![image](https://user-images.githubusercontent.com/114491445/207156693-213221ce-deb1-4744-8cad-ca11ce5930b3.png)
 Hasil yang didapat adalah t = 1.9267 dan p-value = 0.06049
 
 ### 3D
@@ -141,6 +143,9 @@ Menggunakan :
 ```R
 qchisq(p = 0.05, df = 2, lower.tail = FALSE)
 ```
+
+![image](https://user-images.githubusercontent.com/114491445/207156829-b043dfbc-0f03-4326-a24f-6083f8472263.png)
+
 Sehingga didapat 
 - Nilai kritikal atas =  5.991465
 - Nilai kritikal bawah = -5.991465 
@@ -155,7 +160,7 @@ Keputusan
 
 ### 3F
 Kesimpulan 
-Berdasarkan keputusan diatas dapat diambil kesimpulan yaitu tidak terdapat perbedaan atara rata-rata Kota Bandung dan Bali
+>Berdasarkan keputusan diatas dapat diambil kesimpulan yaitu tidak terdapat perbedaan atara rata-rata Kota Bandung dan Bali
 
 ## Nomor 4 (Anova Satu Arah)
 >> Seorang peneliti sedang meneliti spesies dari kucing di ITS. Dalam penelitiannya ia mengumpulkan data tiga spesies kucing yaitu kucing oren, kucing hitam dan kucing putih dengan panjangnya masing - masing.
