@@ -63,7 +63,8 @@ Tentukanlah apakah terdapat pengaruh yang signifikan secara statistika dalam hal
 
 ### 2A
 Apakah anda setuju dengan klaim tersebut?
-> Sebelum dilakukannya pembuktian saya setuju dengan klaim tersebut karena saat dilihat sekilas.
+> Sebelum dilakukannya pembuktian saya setuju dengan klaim tersebut.
+> Setelah pembuktian pun benar adanya bahwa klaim itu dapat diterima.
 
 ### 2B 
 Jelaskan maksud dari output yang dihasilkan!
@@ -78,6 +79,8 @@ sd_populasi <-3900
 zsum.test(mean.x = sampel_mean, sigma.x = sd_populasi, 
         n.x = n, alternative = "greater", mu = klaim_mean)
 ```
+
+![image](https://user-images.githubusercontent.com/114491445/207137763-3c9da962-72b4-4ca1-a32a-1e9f65c802ce.png)
 
 ### 2C
 Buatlah kesimpulan berdasarkan P-Value yang dihasilkan!
