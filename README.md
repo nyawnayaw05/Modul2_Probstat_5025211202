@@ -84,7 +84,7 @@ Buatlah kesimpulan berdasarkan P-Value yang dihasilkan!
 > Kesimpulan : Nilai P-Value lebih kecil dari nilai significant level 𝛼 = 0,05. Sehingga hipotesis nol ditolak sedangkan hipotesis alternatif diterima. Jadi klaim bahwa mobil dikemudikan rata - rata lebih dari 20000 kilometer per tahun dapat diterima.
 
 ## Nomor 3 (Hipotesa 2 Sampel) 
->> Diketahui perusahaan memiliki seorang data analyst ingin memecahkan permasalahan pengambilan keputusan dalam perusahaan tersebut. Selanjutnya didapatkanlah data berikut dari perusahaan saham tersebut.
+>>Diketahui perusahaan memiliki seorang data analyst ingin memecahkan permasalahan pengambilan keputusan dalam perusahaan tersebut. Selanjutnya didapatkanlah data berikut dari perusahaan saham tersebut.
 
 | Nama Kota/Atribut       |     Bandung   |   Bali    |
 |  ---                    |     ---       |   ---     |
@@ -95,22 +95,64 @@ Buatlah kesimpulan berdasarkan P-Value yang dihasilkan!
 >> Dari data di atas berilah keputusan serta kesimpulan yang didapatkan dari hasil di atas. Asumsikan nilai variancenya sama, apakah ada perbedaan pada rata - ratanya (α= 0.05)? Buatlah:
 
 ### 3A
-H0 dan H1 (3)
+H0 dan H1 
+> H0 : μ1 = μ2
+> H1 : μ1 != μ
+
+H0 = tidak terdapat perbedaan signifikan antara rata-rata kedua kota
+H1 = terdapat perbedaan signifikan antara rata-rata kedua kota
 
 ### 3B
-Hitung Sampel Statistik (3)
+Hitung Sampel Statistik!
+```R
+n1 <- 19
+n2 <- 27
+x1 <- 3.64
+x2 <- 2.79
+sigma1 <- 1.67
+sigma2 <- 1.32
+```
+Menggunakan
+```R
+s_pool <- (((n1 - 1)*(sigma1^2) + (n2 - 1)
+        *(sigma2^2))/(n1 + n2 -2))^0.5
+s_pool
+```
+Hasil sampel statistik = 1.473266
 
 ### 3C 
-Lakukan Uji Statistik (df = 2) (5)
+Lakukan Uji Statistik (df = 2)!
+
+Menggunakan :
+```R
+tsum.test (mean.x = x1, s.x = sigma1, n.x = n1, 
+           mean.y = x2, s.y = sigma2, n.y = n2,
+           alternative = "two.sided", var.equal =  TRUE)
+```
+Hasil yang didapat adalah t = 1.9267 dan p-value = 0.06049
 
 ### 3D
-Niliai Kritikal (3)
+Niliai Kritikal 
+
+Menggunakan :
+```R
+qchisq(p = 0.05, df = 2, lower.tail = FALSE)
+```
+Sehingga didapat 
+- Nilai kritikal atas =  5.991465
+- Nilai kritikal bawah = -5.991465 
 
 ### 3E
-Keputusan (3)
+Keputusan 
+
+>H0 diterima
+
+- Karena t berada di antara nilai kritikal bawah dan nilai kritikal atas (Berada di area not reject)
+- P-Value = 0.06049 lebih besar daripada nilai significant level (𝛼 = 0,05)
 
 ### 3F
-Kesimpulan (3)
+Kesimpulan 
+Berdasarkan keputusan diatas dapat diambil kesimpulan yaitu tidak terdapat perbedaan atara rata-rata Kota Bandung dan Bali
 
 ## Nomor 4 (Anova Satu Arah)
 >> Seorang peneliti sedang meneliti spesies dari kucing di ITS. Dalam penelitiannya ia mengumpulkan data tiga spesies kucing yaitu kucing oren, kucing hitam dan kucing putih dengan panjangnya masing - masing.
