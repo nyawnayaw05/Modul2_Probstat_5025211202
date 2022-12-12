@@ -21,11 +21,36 @@ Praktikum 2 Probstat Glenaya (5025211202)
 ### 1.A
 Carilah Standar Deviasi dari data selisih pasangan pengamatan tabel di atas!
 
+>Tabel dibuat terlebih dahulu 
+```R
+sebelum <- c(78, 75, 67, 77, 70, 72, 78, 74, 77)
+sesudah <- c(100, 95, 70, 90, 90, 90, 89, 90, 100)
+```
+>Mendapatkan standar variasi sebelum dan sesudah aktivitas
+```R
+sd(sebelum)
+sd(sesudah)
+```
+Hasil dari sd sebelum = 3.865805
+Hasil dari sd sesudah = 8.833333
+>Mendapatkan selisih standar deviasi
+```R
+sd(sebelum - sesudah)
+```
+Hasil selisih dari standar deviasi = 6.359595
+
 ### 1.B
 Carilah nilai t (p-value)
+```R
+t.test(sebelum, sesudah, paired = TRUE)
+```
+Nilai dari t(p-value) = 6.003e-05
 
 ### 1.C 
 Tentukanlah apakah terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas 𝐴 jika diketahui tingkat signifikansi 𝛼 = 5% serta H0 : "tidak ada pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas 𝐴"
+> Nilai probabilitas yang didapat dari uji t(p-value) adalah 6.003e-05. Sehingga nilai p-value lebih kecil dibandingkan nilai significant level yang nilainya 𝛼 = 0,05. Oleh karena itu, hipotesis nol ditolak dan hipotesis alternatif diterima.
+
+>Kesimpulan : Terdapat pengaruh yang signifikan secara statistika dalam hal jumlah denyut jantung, sebelum dan sesudah mengkonsumsi obat 𝐴 pada tingkat signifikansi 5%.
 
 ## Nomor 2 (Hipotesa 1 Sampel)
 >> Diketahui bahwa mobil dikemudikan rata - rata lebih dari 20.000 kilometer per tahun. Untuk menguji klaim ini, 100 pemilik mobil yang dipilih secara acak diminta untuk mencatat jarak yang mereka tempuh. Jika sampel acak menunjukan rata - rata 23.500 kilometer dan standar deviasi 3900 kilometer. (Kerjakan menggunakan library seperti referensi pada modul).
@@ -109,5 +134,5 @@ Tampilkan tabel dengan mean dan standar deviasi keluaran cahaya untuk setiap per
 ## 5D
 Lakukan uji Tukey!
 
-##5E
+## 5E
 Gunakan compact letter displat untuk menunjukkan perbedaan signifikan antara uji ANOVA dan uji Tukey!
