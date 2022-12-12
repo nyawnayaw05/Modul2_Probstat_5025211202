@@ -21,6 +21,8 @@ Praktikum 2 Probstat Glenaya (5025211202)
 ### 1.A
 Carilah Standar Deviasi dari data selisih pasangan pengamatan tabel di atas!
 
+![image](https://user-images.githubusercontent.com/114491445/207117835-ef3fe26f-eb5d-47e1-90f9-dfe36e9134f6.png)
+
 >Tabel dibuat terlebih dahulu 
 ```R
 sebelum <- c(78, 75, 67, 77, 70, 72, 78, 74, 77)
@@ -39,8 +41,12 @@ sd(sebelum - sesudah)
 ```
 Hasil selisih dari standar deviasi = 6.359595
 
+
 ### 1.B
 Carilah nilai t (p-value)
+
+![image](https://user-images.githubusercontent.com/114491445/207118000-7caf01a6-d7e0-4a74-b24d-9dcbdf409712.png)
+
 ```R
 t.test(sebelum, sesudah, paired = TRUE)
 ```
