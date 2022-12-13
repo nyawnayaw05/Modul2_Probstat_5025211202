@@ -154,34 +154,102 @@ Keputusan
 - P-Value = 0.06049 lebih besar daripada nilai significant level (𝛼 = 0,05)
 
 ### 3F
-Kesimpulan 
+Kesimpulan
+
 Berdasarkan keputusan diatas dapat diambil kesimpulan yaitu tidak terdapat perbedaan atara rata-rata Kota Bandung dan Bali
 
 ## Nomor 4 (Anova Satu Arah)
 >> Seorang peneliti sedang meneliti spesies dari kucing di ITS. Dalam penelitiannya ia mengumpulkan data tiga spesies kucing yaitu kucing oren, kucing hitam dan kucing putih dengan panjangnya masing - masing.
 
-Jika :
+>>Jika :
 Diketahui data set : https://intip.in/datasetprobstat1
 H0 : Tidak ada perbedaan panjang antara ketiga spesies atau rata - rata panjangnya sama
 
-Maka Kerjakan atau Carilah :
+>>Maka Kerjakan atau Carilah :
 ### 4A
 Buatkanlah masing - masing jenis spesies menjadi 3 subjek "Grup" (grup 1, grup 2, grup 3). Lalu gambarkan plot kuantil normal untuk setiap kelompok dan lihat apakah ada outlier utama dalam homogenitas varians.
 
+Memasukan data menggunakan fungsi ini :
+```R
+dataKucing <- read.table(url(
+    "https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/  onewayanova.txt"),h=T)
+attach(dataKucing)
+names(dataKucing)
+```
+
+Lalu plot kuantil normal akan digambar menggunakan fungsi di bawah ini :
+```R
+dataKucing$Group <- as.factor(dataKucing$Group)
+dataKucing$Group = factor(dataKucing$Group,labels = c("Kucing Oren", "Kucing Hitam", "Kucing Putih"))
+
+class(dataKucing$Group)
+
+Group1 <- subset(dataKucing, Group == "Kucing Oren")
+Group2 <- subset(dataKucing, Group == "Kucing Hitam")
+Group3 <- subset(dataKucing, Group == "Kucing Putih")
+
+qqnorm(Group1$Length)
+qqline(Group1$Length, col = "orange")
+
+qqnorm(Group2$Length)
+qqline(Group2$Length, col = "black")
+
+qqnorm(Group3$Length)
+qqline(Group3$Length, col = "red")
+```
+
+
 ### 4B
-Carilah atau periksalah Homogeneity of variance nya, berapa nilai p yang didapatkan? Aapa hipotesis dan kesimpulan yang dapat diambil?
+Carilah atau periksalah Homogeneity of variance nya, berapa nilai p yang didapatkan? Apa hipotesis dan kesimpulan yang dapat diambil?
+> H0 : Variansi ketiga populasi sama
+H1 : Ada variansi yang berbeda diantara ketiga populasi
+
+P-Value di dapat menggunakan fungsi di bawah ini :
+```R
+bartlett.test(Length ~ Group, data = dataKucing)
+```
+P-Value = 0.8054
+
+- Hipotesis nol diterima karena p-value lebih besar dari nilai significant level (𝛼 = 0,05). 
+
+- Kesimpulan yang dapat diambil dari keputusan di atas adalh variansi ketiga populasi sama.
 
 ### 4C 
 Untuk uji ANOVA, buatlah model linier dengan panjang versus grup dan beri nama model tersebut model 1.
 
+```R
+model1 = lm(Length ~ Group, data = dataKucing)
+anova(model1)
+```
+
 ### 4D
 Dari hasil poin C, berapakah nilai-p? Apa yang dapat anda simpulkan dari H0?
+
+- P-Value dari uji ANOVA adalah 0,0013. P-Value tersebut lebih kecil dari nilai significant level (𝛼 = 0,05). Oleh karena itu hipotesis nol ditolak sedangkan hipotesis alternatif diterima.
+- Kesimpulan : Ada nilai variansi yang berbeda diantara ketiga populasi
 
 ### 4E
 Verifikasilah jawaban model 1 dengan Post-Hooc test TukeyHSD, dari nilai p yang didapatkan apakah satu jenis kucing lebih panjang dari yang lain? Jelaskan.
 
+```R
+TukeyHSD(aov(model1))
+```
+
+Jika perbandingan spesies memiliki nilai p>0.05, maka secara statistik kedua spesies memiliki panjang yang sama. Sedangkan P<0.05, maka spesies berbeda. Terlihat dari hasil pada tabel hasil kucing putih dan kucing oren memiliki panjang sama p=0.8726158. Sedangkan kucing hitam berbeda dari keduanya. Melalui tabel selisih (diff), ditemukan bahwa kucing hitam lebih pendek daripada kucing putih dan oren
+
+Kesimpulan : terdapat nilai variansi yang berbeda diantara ketiga populasi. Hal ini sesuai dengan Post-hooc test TukeyHSD yang membuktikan bahwa panjang kucing hitam berbeda dari kucing putih dan kucing oren
+
 ### 4F
 Visualisasikan data dengan ggplot2
+```R
+library("ggplot2")
+ggplot(dataKucing, aes(x = Group, y = Length)) +
+  geom_boxplot(fill = "blue", colour = "black") +
+  scale_x_discrete() + xlab("Treatment Group") +
+  ylab("Cat Length")
+```
+
+
 
 ## Nomor 5 (Anova Dua Arah) 
 >> Data yang digunakan hasil eksperimen yang dilakukan untuk mengetahui pengaruh suhu operasi (100˚C, 125˚C dan 150˚C) dan tiga jenis kaca pelat muka (A, B, dan C) pada keluaran cahaya tabung osiloskop. Percobaan dilakukan sebanyak 27 kali dan didapat data sebagai berikut : 
