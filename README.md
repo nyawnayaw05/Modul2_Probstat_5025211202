@@ -279,6 +279,9 @@ https://drive.google.com/file/d/1aLUOdw_LVJq6VQrQEkuQhZ8FW43FemTJ/view?usp=shari
 ## 5A
 Buatlah plot sederhana untuk visualisasi data!
 ```R
+install.packages("multcompView")
+install.packages("readr", repos=c("http://rstudio.org/_packages",   "http://cran.rstudio.com"))
+
 library(dplyr)
 library(ggplot2)
 library(readr)
@@ -292,6 +295,8 @@ qplot(x = Temp, y = Light, geom = "point", data = GTLImport) +
   facet_grid(.~Glass, labeller = label_both)
 ```
 
+![image](https://user-images.githubusercontent.com/114491445/207312013-8fb77ec4-b776-498c-9499-5a2625d886dd.png)
+
 ## 5B
 Lakukan uji ANOVA dua arah untuk 2 faktor
 ```R
@@ -303,6 +308,8 @@ anova <- aov(Light ~ Glass*Temp_Factor, data = GTLImport)
 summary(anova)
 ```
 
+![image](https://user-images.githubusercontent.com/114491445/207312313-cfb5f6ea-02d9-4719-989e-223ef7cbdefe.png)
+
 ## 5C
 Tampilkan tabel dengan mean dan standar deviasi keluaran cahaya untuk setiap perlakuan (kombinasi kaca pelat muka dan suhu operasi)
 ```R
@@ -312,12 +319,16 @@ arrange(desc(mean))
 print(data_summary)
 ```
 
+![image](https://user-images.githubusercontent.com/114491445/207312808-7418b492-b8b7-4dc8-83c5-c051d832743b.png)
+
 ## 5D
 Lakukan uji Tukey!
 ```R
 tukey <- TukeyHSD(anova)
 print(tukey)
 ```
+
+![image](https://user-images.githubusercontent.com/114491445/207313194-5d22dc08-944d-4d34-99d6-be559f5d46dd.png)
 
 ## 5E
 Gunakan compact letter displat untuk menunjukkan perbedaan signifikan antara uji ANOVA dan uji Tukey!
@@ -329,3 +340,4 @@ cld <- as.data.frame.list(tukey.cld$`Glass:Temp_Factor`)
 data_summary$Tukey <- cld$Letters
 print(data_summary)
 ```
+![image](https://user-images.githubusercontent.com/114491445/207313609-62b6f9f6-4c29-41f2-8c21-edac5ebab7a0.png)
