@@ -203,7 +203,17 @@ qqline(Group2$Length, col = "black")
 qqnorm(Group3$Length)
 qqline(Group3$Length, col = "red")
 ```
+<b> Plot Kucing Oren </b>
 
+![image](https://user-images.githubusercontent.com/114491445/207306624-c7238c4e-f850-45a8-9a09-47145095e12c.png)
+
+<b> Plot Kucing Hitam </b>
+
+![image](https://user-images.githubusercontent.com/114491445/207306776-79465ffc-2162-4b19-8883-4e7dec4968de.png)
+
+<b> Plot Kucing Putih </b>
+
+![image](https://user-images.githubusercontent.com/114491445/207306913-b777e9a3-515c-4252-9e7a-4bf9b5905476.png)
 
 ### 4B
 Carilah atau periksalah Homogeneity of variance nya, berapa nilai p yang didapatkan? Apa hipotesis dan kesimpulan yang dapat diambil?
@@ -214,6 +224,9 @@ P-Value di dapat menggunakan fungsi di bawah ini :
 ```R
 bartlett.test(Length ~ Group, data = dataKucing)
 ```
+
+![image](https://user-images.githubusercontent.com/114491445/207307020-81ae4a8e-536a-4978-9f0a-8a28a0c1ac6a.png)
+
 P-Value = 0.8054
 
 - Hipotesis nol diterima karena p-value lebih besar dari nilai significant level (𝛼 = 0,05). 
@@ -227,6 +240,7 @@ Untuk uji ANOVA, buatlah model linier dengan panjang versus grup dan beri nama m
 model1 = lm(Length ~ Group, data = dataKucing)
 anova(model1)
 ```
+![image](https://user-images.githubusercontent.com/114491445/207307210-e024396a-7bbb-4c5c-9f54-4b9870ab0481.png)
 
 ### 4D
 Dari hasil poin C, berapakah nilai-p? Apa yang dapat anda simpulkan dari H0?
@@ -240,6 +254,8 @@ Verifikasilah jawaban model 1 dengan Post-Hooc test TukeyHSD, dari nilai p yang 
 ```R
 TukeyHSD(aov(model1))
 ```
+
+![image](https://user-images.githubusercontent.com/114491445/207307407-4e19452f-beaf-4ec8-9584-a9adb87dc36a.png)
 
 Jika perbandingan spesies memiliki nilai p>0.05, maka secara statistik kedua spesies memiliki panjang yang sama. Sedangkan P<0.05, maka spesies berbeda. Terlihat dari hasil pada tabel hasil kucing putih dan kucing oren memiliki panjang sama p=0.8726158. Sedangkan kucing hitam berbeda dari keduanya. Melalui tabel selisih (diff), ditemukan bahwa kucing hitam lebih pendek daripada kucing putih dan oren
 
@@ -255,7 +271,7 @@ ggplot(dataKucing, aes(x = Group, y = Length)) +
   ylab("Cat Length")
 ```
 
-
+![image](https://user-images.githubusercontent.com/114491445/207307546-12c2091a-40f3-4c79-bbdf-6721c77a1dec.png)
 
 ## Nomor 5 (Anova Dua Arah) 
 >> Data yang digunakan hasil eksperimen yang dilakukan untuk mengetahui pengaruh suhu operasi (100˚C, 125˚C dan 150˚C) dan tiga jenis kaca pelat muka (A, B, dan C) pada keluaran cahaya tabung osiloskop. Percobaan dilakukan sebanyak 27 kali dan didapat data sebagai berikut : 
